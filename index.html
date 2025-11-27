@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>JavaScript Test Project</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="logo">JS Test</h1>
+      <nav>
+        <button id="theme-toggle" aria-label="Toggle theme">Toggle Theme</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h2>Simple HTML/CSS/JS Starter</h2>
+      <p>Minimal scaffold with a small interactive demo (add items, toggle theme).</p>
+    </section>
+
+    <section class="card-grid">
+      <article class="card">
+        <h3>Interactive List</h3>
+        <form id="item-form">
+          <input id="item-input" type="text" placeholder="Add an item" required>
+          <button type="submit">Add</button>
+        </form>
+        <ul id="items" class="items"></ul>
+      </article>
+
+      <article class="card">
+        <h3>About</h3>
+        <p>This small project demonstrates structure and basic interactivity for front-end experiments.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">Made with ♥ — Open the `index.html` in your browser.</div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
