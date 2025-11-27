@@ -1,6 +1,3 @@
-// let tiempoRestante = 120; // Los segundos que dura la bomba antes de explotar
-// const temporizadorDisplay = document.getElementById('temporizador-display');
-
 class BombaManager {
     constructor() {
         // Atributos bomba temporizador
@@ -14,6 +11,9 @@ class BombaManager {
         this.maxFallos = 3;
         this.fallosActuales = 0;
         this.rejillaJuegos = document.getElementById('rejilla-juegos');
+
+        // Array de puzzles disponibles (por implementar)
+        this.tiposPuzzle = [BotonPuzzle, CablePuzzle];
 
         // Iniciamos el temporizador
         this.iniciarTemporizador();
@@ -73,6 +73,27 @@ class BombaManager {
 
     colocarJuegosAleatorios() {
         const ranuras = this.rejillaJuegos.querySelectorAll('.ranura');
+        const indicesSeleccionados = new Set();
+        
+        // Bucle para seleccionar 3 índices únicos (sin repetición)
+        while (indicesSeleccionados.size < this.juegosActivos) {
+            const indiceAleatorio = Math.floor(Math.random() * ranuras.length);
+            indicesSeleccionados.add(indiceAleatorio); 
+        }
+
+        // Iteramos sobre los 3 índices únicos para instanciar y renderizar
+        indicesSeleccionados.forEach(indice => {
+            const ranura = ranuras[indice];
+
+            // Elegimos un índice aleatorio dentro del array this.tiposPuzzle
+            const ClaseSeleccionada = this.tiposPuzzle[
+                Math.floor(Math.random() * this.tiposPuzzle.length)
+            ];
+            
+            // Creamos una instancia de la clase que fue seleccionada aleatoriamente
+            const puzzle = new ClaseSeleccionada(this, ranura); 
+            puzzle.renderizar();
+        });
     }
 }
 
@@ -123,7 +144,12 @@ class BotonPuzzle extends Puzzle {
     }
 }
 
+class CablePuzzle extends Puzzle {
+    constructor(manager, contenedorHTML) {
+        super(manager, contenedorHTML);
+    }
 
+}
 
 
   document.addEventListener('DOMContentLoaded', () => {
