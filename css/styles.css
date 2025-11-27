@@ -1,48 +1,97 @@
-:root{
-  --bg: #ffffff;
-  --fg: #111827;
-  --muted: #6b7280;
-  --card: #f9fafb;
-  --accent: #2563eb;
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #fff;
 }
 
-[data-theme="dark"]{
-  --bg: #0b1220;
-  --fg: #e6eef8;
-  --muted: #9aa6bd;
-  --card: #071127;
-  --accent: #60a5fa;
+.bomba-contenedor {
+    /* Centrar todo en la pantalla */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
 }
 
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
-  font-family:Inter,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-  background:var(--bg);
-  color:var(--fg);
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-}
-.container{max-width:980px;margin:0 auto;padding:1rem}
-.site-header{border-bottom:1px solid rgba(0,0,0,0.06)}
-.site-header .container{display:flex;align-items:center;justify-content:space-between;padding:1rem 0}
-.logo{margin:0;font-size:1.25rem}
-#theme-toggle{background:transparent;border:1px solid var(--muted);color:var(--fg);padding:.4rem .6rem;border-radius:6px;cursor:pointer}
-.hero{padding:2rem 0}
-.hero h2{margin:.2rem 0}
-.card-grid{display:grid;grid-template-columns:1fr;gap:1rem}
-.card{background:var(--card);padding:1rem;border-radius:10px;box-shadow:0 4px 18px rgba(2,6,23,0.06)}
-.card h3{margin-top:0}
-.items{list-style:none;padding:0;margin:0;margin-top:.5rem}
-.items li{padding:.5rem .6rem;border-radius:6px;background:rgba(0,0,0,0.03);margin-bottom:.5rem;display:flex;justify-content:space-between;align-items:center}
-.items button{background:transparent;border:none;color:var(--accent);cursor:pointer}
-
-.site-footer{padding:1rem 0;border-top:1px solid rgba(0,0,0,0.06);margin-top:2rem}
-
-@media(min-width:700px){
-  .card-grid{grid-template-columns:2fr 1fr}
+.temporizador {
+    font-size: 3em;
+    color: red;
+    margin-bottom: 20px;
+    border: 3px solid red;
+    padding: 10px 20px;
 }
 
-input[type="text"]{padding:.5rem .6rem;border:1px solid rgba(0,0,0,0.08);border-radius:6px;width:65%;margin-right:.5rem}
-form button{padding:.5rem .7rem;border-radius:6px;border:1px solid var(--accent);background:var(--accent);color:white;cursor:pointer}
+.rejilla-juegos {
+    /* Activamos CSS Grid */
+    display: grid;
+    /* 3 columnas de igual ancho (1fr) */
+    grid-template-columns: repeat(3, 1fr);
+    /* 2 filas de igual altura */
+    grid-template-rows: repeat(2, 1fr);
+    /* Espacio entre los elementos */
+    gap: 15px;
+    width: 70vw; /* Ancho de ejemplo */
+    max-width: 900px;
+    min-height: 400px;
+    padding: 15px;
+    border: 5px solid #555;
+    background-color: #222;
+}
+
+.ranura {
+    /* Estilo de las ranuras donde irán los juegos */
+    background-color: #444;
+    border: 1px solid #777;
+    display: flex; /* Para centrar el contenido del juego luego */
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    color: white;
+}
+
+/* Estilos para la página explotada.html */
+
+.explosion-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    background-color: #000;
+    color: red; /* Color de peligro */
+}
+
+.explosion-container h1 {
+    font-size: 4em;
+    margin-bottom: 20px;
+    animation: pulsar 1.5s infinite alternate; /* Animación simple */
+}
+
+.explosion-container p {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+}
+
+.boton-reintentar {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    text-decoration: none; /* Quitamos el subrayado del enlace */
+    color: white;
+    background-color: darkred;
+    border: 2px solid red;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.boton-reintentar:hover {
+    background-color: red;
+}
+
+/* Animación de pulso para el título */
+@keyframes pulsar {
+    from { color: red; text-shadow: 0 0 5px darkred; }
+    to { color: yellow; text-shadow: 0 0 20px red; }
+}
