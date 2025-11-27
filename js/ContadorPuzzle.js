@@ -1,0 +1,81 @@
+import { Puzzle } from './puzzle.js';
+
+export class ContadorPuzzle extends Puzzle {
+    constructor(manager, contenedorHTML) {
+        super(manager, contenedorHTML);
+        this.temporizadorInternoID = null;
+        this.tiempoInicio = null;
+        this.tiempoRestanteDisplay = null;
+    }
+
+    renderizar() {
+        this.contenedorHTML.innerHTML = `
+            <div class="puzzle-title">¡Presiona el botón cuando la cuenta llegue a 0!</div>
+            <div class="puzzle-display">15.000</div>
+
+            <button class="action-button">EMPEZAR</button>
+        `;
+
+        this.tiempoRestanteDisplay = this.contenedorHTML.querySelector('.puzzle-display');
+        this.actionButton = this.contenedorHTML.querySelector('.action-button');
+
+        this.actionButton.addEventListener('click', this.iniciarManejador.bind(this));
+    }
+
+    iniciarManejador() {
+        if (!this.temporizadorInternoID) {
+            this.tiempoInicio = Date.now();
+            this.temporizadorInternoID = setInterval(() => {
+                this.actualizarTemporizador();
+            }, 10); // con esto actualizamos cada 10 ms
+            
+
+            this.actionButton.textContent = '¡DETENER!';
+        } else {
+            clearInterval(this.temporizadorInternoID);
+            const tiempoFin = Date.now();
+            const tiempoTranscurrido = tiempoFin - this.tiempoInicio;
+
+            const tiempoIdeal = 15000; // 15 segundos en ms
+            const margen = 1000; // 1 segundo en ms de margen
+
+            if (tiempoTranscurrido >= (tiempoIdeal - margen) && tiempoTranscurrido <= (tiempoIdeal + margen)) {
+                this.actionButton.textContent = 'CONSEGUIDO!';
+                this.contenedorHTML.style.backgroundColor = 'green';
+                this.solucionar();
+            } else {
+                this.actionButton.textContent = "FALLASTE!";
+                this.actionButton.disabled = true;
+                this.contenedorHTML.style.backgroundColor = 'red';
+                this.registrarFallo();
+            }
+
+        }
+    }
+
+    actualizarTemporizador() {
+        const duracionTotal = 15000; // 15 segundos
+
+        const tiempoTranscurrido = Date.now() - this.tiempoInicio;
+        let tiempoRestante = duracionTotal - tiempoTranscurrido;
+
+        if (tiempoRestante <= 6000) {
+            this.tiempoRestanteDisplay.style.visibility = 'hidden';
+        }
+
+        if (tiempoRestante <= -1000) {
+            clearInterval(this.temporizadorInternoID);
+            this.manager.explotarBomba();
+            return;
+        }
+
+        const segundos = Math.floor(tiempoRestante / 1000);
+
+        const milisegundos = Math.floor((tiempoRestante % 1000) / 10);
+
+        this.tiempoRestanteDisplay.textContent = `${segundos < 10 ? '0' : ''}${segundos}.${milisegundos < 10 ? '0' : ''}${milisegundos}`;
+    }
+
+
+
+}

@@ -1,3 +1,7 @@
+import { BotonPuzzle } from './BotonPuzzle.js';
+import { CablePuzzle } from './CablePuzzle.js';
+import { ContadorPuzzle } from './ContadorPuzzle.js';
+
 class BombaManager {
     constructor() {
         // Atributos bomba temporizador
@@ -13,10 +17,13 @@ class BombaManager {
         this.rejillaJuegos = document.getElementById('rejilla-juegos');
 
         // Array de puzzles disponibles (por implementar)
-        this.tiposPuzzle = [BotonPuzzle, CablePuzzle];
+        this.tiposPuzzle = [BotonPuzzle, CablePuzzle, ContadorPuzzle];
 
         // Iniciamos el temporizador
         this.iniciarTemporizador();
+
+        // La acción de colocar los juegos en la rejilla
+        this.colocarJuegosAleatorios();
     }
 
     iniciarTemporizador() {
@@ -96,61 +103,6 @@ class BombaManager {
         });
     }
 }
-
-class Puzzle {
-    constructor(manager, contenedorHTML) {
-        this.manager = manager;
-        this.resuelto = false;
-        this.contenedorHTML = contenedorHTML;
-    }
-
-    renderizar() {
-        this.contenedorHTML.innerHTML = '<p>Puzzle genérico (debe ser sobrescrito)</p>';
-    }
-
-    solucionar() {
-        if (!this.resuelto) {
-            this.resuelto = true;
-            this.manager.manejarAcierto();
-            this.contenedorHTML.innerHTML = 'green'; // Indicador visual de éxito
-        }
-    }
-
-    registrarFallo () {
-        this.manager.manejarFallo();
-    }
-
-}
-
-class BotonPuzzle extends Puzzle {
-    constructor(manager, contenedorHTML) {
-        // Llamar al constructor de la clase Puzzle
-        super(manager, contenedorHTML);
-    }
-
-    renderizar() {
-        // 1. Crear el botón HTML
-        const boton = document.createElement('button');
-        boton.textContent = 'Presiona para desactivar';
-        boton.classList.add('puzzle-boton'); // Clase CSS opcional para estilo
-
-        // 2. Conectar el evento click con el método solucionar()
-        // Usamos .bind(this) para asegurar que 'this' dentro de solucionar apunte al puzzle.
-        boton.addEventListener('click', this.solucionar.bind(this));
-        
-        // 3. Limpiar la ranura y añadir el botón
-        this.contenedorHTML.innerHTML = '';
-        this.contenedorHTML.appendChild(boton);
-    }
-}
-
-class CablePuzzle extends Puzzle {
-    constructor(manager, contenedorHTML) {
-        super(manager, contenedorHTML);
-    }
-
-}
-
 
   document.addEventListener('DOMContentLoaded', () => {
       new BombaManager();
