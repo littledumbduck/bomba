@@ -2,10 +2,10 @@ import { BotonPuzzle } from './BotonPuzzle.js';
 import { CablePuzzle } from './CablePuzzle.js';
 import { ContadorPuzzle } from './ContadorPuzzle.js';
 
-class BombaManager {
+export class BombaManager {
     constructor() {
         // Atributos bomba temporizador
-        this.tiempoRestante = 120;    
+        this.tiempoRestante = 90;    
         this.temporizadorID = null;
         this.temporizadorDisplay = document.getElementById('temporizador-display');
 
@@ -102,6 +102,7 @@ class BombaManager {
             puzzle.renderizar();
         });
     }
+    
 }
 
   document.addEventListener('DOMContentLoaded', () => {

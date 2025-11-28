@@ -27,6 +27,7 @@ export class ContadorPuzzle extends Puzzle {
             this.tiempoInicio = Date.now();
             this.temporizadorInternoID = setInterval(() => {
                 this.actualizarTemporizador();
+        this.contenedorHTML.style.backgroundColor = '#444';
             }, 10); // con esto actualizamos cada 10 ms
             
 
@@ -38,16 +39,17 @@ export class ContadorPuzzle extends Puzzle {
 
             const tiempoIdeal = 15000; // 15 segundos en ms
             const margen = 1000; // 1 segundo en ms de margen
-
+            
             if (tiempoTranscurrido >= (tiempoIdeal - margen) && tiempoTranscurrido <= (tiempoIdeal + margen)) {
                 this.actionButton.textContent = 'CONSEGUIDO!';
                 this.contenedorHTML.style.backgroundColor = 'green';
                 this.solucionar();
             } else {
                 this.actionButton.textContent = "FALLASTE!";
-                this.actionButton.disabled = true;
+                this.actionButton.disabled = false;
                 this.contenedorHTML.style.backgroundColor = 'red';
                 this.registrarFallo();
+                this.resetearPuzzle();
             }
 
         }
@@ -76,6 +78,10 @@ export class ContadorPuzzle extends Puzzle {
         this.tiempoRestanteDisplay.textContent = `${segundos < 10 ? '0' : ''}${segundos}.${milisegundos < 10 ? '0' : ''}${milisegundos}`;
     }
 
-
-
+    resetearPuzzle() {
+        clearInterval(this.temporizadorInternoID);
+        this.temporizadorInternoID = null;
+        this.tiempoRestanteDisplay.textContent = '15.000';
+        this.renderizar();
+    }
 }
