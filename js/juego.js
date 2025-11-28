@@ -1,6 +1,7 @@
 import { BotonPuzzle } from './BotonPuzzle.js';
 import { CablePuzzle } from './CablePuzzle.js';
 import { ContadorPuzzle } from './ContadorPuzzle.js';
+import { Numberle } from './Numberle.js';
 
 export class BombaManager {
     constructor() {
@@ -17,7 +18,7 @@ export class BombaManager {
         this.rejillaJuegos = document.getElementById('rejilla-juegos');
 
         // Array de puzzles disponibles (por implementar)
-        this.tiposPuzzle = [BotonPuzzle, CablePuzzle, ContadorPuzzle];
+        this.tiposPuzzle = [Numberle, ContadorPuzzle];
 
         // Iniciamos el temporizador
         this.iniciarTemporizador();

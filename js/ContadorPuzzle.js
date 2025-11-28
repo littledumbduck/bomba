@@ -7,11 +7,11 @@ export class ContadorPuzzle extends Puzzle {
         this.tiempoInicio = null;
         this.tiempoRestanteDisplay = null;
     }
-
+    
     renderizar() {
         this.contenedorHTML.innerHTML = `
             <div class="puzzle-title">¡Presiona el botón cuando la cuenta llegue a 0!</div>
-            <div class="puzzle-display">15.000</div>
+            <div class="puzzle-display">15.00</div>
 
             <button class="action-button">EMPEZAR</button>
         `;
@@ -42,14 +42,25 @@ export class ContadorPuzzle extends Puzzle {
             
             if (tiempoTranscurrido >= (tiempoIdeal - margen) && tiempoTranscurrido <= (tiempoIdeal + margen)) {
                 this.actionButton.textContent = 'CONSEGUIDO!';
-                this.contenedorHTML.style.backgroundColor = 'green';
                 this.solucionar();
             } else {
-                this.actionButton.textContent = "FALLASTE!";
-                this.actionButton.disabled = false;
+                // FALLO
+                
+                // 1. Mostrar mensaje de fallo y el botón de REINTENTO (Corrección de Sintaxis)
+                this.contenedorHTML.innerHTML = `
+                    <div class="puzzle-title">¡FALLASTE! Pulsaste el botón a los ${tiempoIdeal - tiempoTranscurrido}ms.</div>
+                    <button class="action-button-retry">REINTENTAR</button>
+                `;
+
+                // 2. Lógica de registro
                 this.contenedorHTML.style.backgroundColor = 'red';
                 this.registrarFallo();
-                this.resetearPuzzle();
+                
+                // 3. Conectar el nuevo botón de REINTENTAR
+                const retryButton = this.contenedorHTML.querySelector('.action-button-retry');
+                
+                // Conectamos el botón de reintento al método resetearPuzzle()
+                retryButton.addEventListener('click', this.resetearPuzzle.bind(this));
             }
 
         }

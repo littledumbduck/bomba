@@ -14,6 +14,7 @@ export class Puzzle {
             this.resuelto = true;
             this.manager.manejarAcierto();
             this.contenedorHTML.innerHTML = '¡Desactivado!'; // Indicador visual de éxito
+            this.contenedorHTML.style.backgroundColor = 'green';
         }
     }
 
