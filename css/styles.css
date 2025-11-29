@@ -28,8 +28,8 @@ body {
     grid-template-rows: repeat(2, 1fr);
     gap: 15px;
     width: 70vw;
-    max-width: 1200px;
-    min-height: 600px;
+    max-width: 1400px;
+    min-height: 800px;
     padding: 15px;
     border: 5px solid #555;
     background-color: #222;
@@ -164,3 +164,51 @@ body {
     from { color: rgb(94, 255, 94); text-shadow: 0 0 5px rgb(168, 255, 194); }
     to { color: rgb(0, 224, 11); text-shadow: 0 0 20px rgb(74, 100, 3); }
 }
+
+/* Estilos para SimonDicePuzzle.js */
+
+.simon-boton {
+    width: 120px;
+    height: 120px;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.1s;
+    display: inline-block;
+    grid-template-columns: repeat(2, 100px);
+    grid-template-rows: repeat(2, 100px);
+    gap: 15px;
+    /* Organizar los 4 botones en 2 columnas */
+    margin: 10px;
+    opacity: 1;
+}
+
+.simon-boton:active {
+    transform: scale(0.9);
+    opacity: 1;
+}
+
+
+.simon-dice-title {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.simon-dice-info {
+    margin-top: 15px;
+    font-size: 1.1em;
+}
+
+.comenzar-simon-boton {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #cf0a0a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 90px;
+}
+
+/* Fin de los estilos para SimonDicePuzzle.js */

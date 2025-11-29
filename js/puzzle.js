@@ -6,7 +6,7 @@ export class Puzzle {
     }
 
     renderizar() {
-        this.contenedorHTML.innerHTML = '<p>Puzzle genérico (debe ser sobrescrito)</p>';
+        this.contenedorHTML.innerHTML = '<p>No se hizo bien el overread</p>';
     }
 
     solucionar() {

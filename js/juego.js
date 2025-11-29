@@ -1,7 +1,6 @@
-import { BotonPuzzle } from './BotonPuzzle.js';
-import { CablePuzzle } from './CablePuzzle.js';
 import { ContadorPuzzle } from './ContadorPuzzle.js';
 import { Numberle } from './Numberle.js';
+import { SimonDicePuzzle } from './SimonDicePuzzle.js';
 
 export class BombaManager {
     constructor() {
@@ -18,7 +17,7 @@ export class BombaManager {
         this.rejillaJuegos = document.getElementById('rejilla-juegos');
 
         // Array de puzzles disponibles (por implementar)
-        this.tiposPuzzle = [Numberle, ContadorPuzzle];
+        this.tiposPuzzle = [Numberle, SimonDicePuzzle, ContadorPuzzle];
 
         // Iniciamos el temporizador
         this.iniciarTemporizador();
@@ -34,7 +33,7 @@ export class BombaManager {
     }
 
     manejarTiempo() {
-        // 1. Restamos y actualizamos la pantalla
+        // Restamos y actualizamos la pantalla
         this.tiempoRestante--; 
         
         // Formateamos el tiempo a '0:59', '1:00', etc. para que se vea mejor
