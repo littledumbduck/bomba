@@ -45,18 +45,16 @@ export class ContadorPuzzle extends Puzzle {
                 this.solucionar();
             } else {
                 // FALLO
-                
-                // 1. Mostrar mensaje de fallo y el botón de REINTENTO (Corrección de Sintaxis)
-                this.contenedorHTML.innerHTML = `
+                    this.contenedorHTML.innerHTML = `
                     <div class="puzzle-title">¡FALLASTE! Pulsaste el botón a los ${tiempoIdeal - tiempoTranscurrido}ms.</div>
                     <button class="action-button-retry">REINTENTAR</button>
                 `;
 
-                // 2. Lógica de registro
+                // Lógica de registro
                 this.contenedorHTML.style.backgroundColor = 'red';
                 this.registrarFallo();
                 
-                // 3. Conectar el nuevo botón de REINTENTAR
+                // Conectar el nuevo botón de REINTENTAR
                 const retryButton = this.contenedorHTML.querySelector('.action-button-retry');
                 
                 // Conectamos el botón de reintento al método resetearPuzzle()
@@ -90,9 +88,10 @@ export class ContadorPuzzle extends Puzzle {
     }
 
     resetearPuzzle() {
+        this.contenedorHTML.style.backgroundColor = '#444';
         clearInterval(this.temporizadorInternoID);
         this.temporizadorInternoID = null;
-        this.tiempoRestanteDisplay.textContent = '15.000';
+        this.tiempoRestanteDisplay.textContent = '15.00';
         this.renderizar();
     }
 }

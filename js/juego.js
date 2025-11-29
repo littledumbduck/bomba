@@ -54,7 +54,6 @@ export class BombaManager {
 
     explotarBomba() {
         window.location.href = 'explotada.html';
-        console.log("¡La bomba ha explotado!");
     }
 
     manejarAcierto() {
@@ -66,12 +65,21 @@ export class BombaManager {
         if (this.aciertosActuales >= this.juegosActivos) {
             clearInterval(this.temporizadorID);
             window.location.href = 'victoria.html';
-            console.log("¡Bomba desactivada!");
         }
     }
 
     manejarFallo() {
         this.fallosActuales++;
+        const contadorFallosDisplay = document.getElementById('contadorfallos-display');
+        let x = '';
+
+        if (this.fallosActuales === 1) {
+            x = 'X';
+        } else if (this.fallosActuales === 2) {
+            x = 'X X';
+        }
+
+        contadorFallosDisplay.textContent = x;
         if (this.fallosActuales >= this.maxFallos) {
             clearInterval(this.temporizadorID);
             this.explotarBomba();
