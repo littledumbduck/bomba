@@ -1,6 +1,7 @@
 import { ContadorPuzzle } from './ContadorPuzzle.js';
 import { Numberle } from './Numberle.js';
 import { SimonDicePuzzle } from './SimonDicePuzzle.js';
+import { PalabrasPuzzle } from './PalabrasPuzzle.js';
 
 export class BombaManager {
     constructor() {
@@ -17,7 +18,7 @@ export class BombaManager {
         this.rejillaJuegos = document.getElementById('rejilla-juegos');
 
         // Array de puzzles disponibles (por implementar)
-        this.tiposPuzzle = [Numberle, SimonDicePuzzle, ContadorPuzzle];
+        this.tiposPuzzle = [Numberle, SimonDicePuzzle, ContadorPuzzle, PalabrasPuzzle];
 
         // Iniciamos el temporizador
         this.iniciarTemporizador();
@@ -96,7 +97,7 @@ export class BombaManager {
             indicesSeleccionados.add(indiceAleatorio); 
         }
 
-        // Iteramos sobre los 3 índices únicos para instanciar y renderizar
+        // Iteramos sobre los índices únicos para instanciar y renderizar
         indicesSeleccionados.forEach(indice => {
             const ranura = ranuras[indice];
 

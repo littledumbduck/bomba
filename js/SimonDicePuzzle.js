@@ -66,11 +66,11 @@ export class SimonDicePuzzle extends Puzzle {
             if (indice >= this.nivel) { // Si ya mostramos la secuencia completa
                 clearInterval(intervalo);
                 
-                // Esperamos 500ms
+                // Esperamos 250ms
                 setTimeout(() => {
                     this.habilitarBotones(); // Habilitamos el input para el usuario
                     this.listoDisplay.textContent = '¡TU TURNO!';
-                }, 500); 
+                }, 100); 
                 
                 return; 
             }

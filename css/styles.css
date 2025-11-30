@@ -241,3 +241,69 @@ body {
 }
 
 /* Fin de los estilos para SimonDicePuzzle.js */
+
+/* Estilos para PalabrasPuzzle.js */
+
+.palabras-puzzle-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.palabras-title {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.palabras-display {
+    font-size: 2em;
+    margin-bottom: 20px;
+    border: 2px solid #fff;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #ff5722;
+}
+
+.boton-palabra-repetida {
+    padding: 10px 25px;
+    font-size: 1em;
+    background-color: #cf0a0a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.boton-palabra-repetida:hover {
+    background-color: #005f73;
+}
+
+.boton-palabra-repetida:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+}
+
+.boton-palabra-nueva {
+    padding: 10px 25px;
+    font-size: 1em;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 15px;
+}
+
+.boton-palabra-nueva:hover {
+    background-color: #00796b;
+}
+
+.boton-palabra-nueva:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+}
+
+/* Fin de los estilos para PalabrasPuzzle.js */
