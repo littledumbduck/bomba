@@ -60,7 +60,7 @@ export class Numberle extends Puzzle {
 
         if (intento === this.numeroSecreto) {
             // Lógica de ACUERTO
-            feedbackArea.innerHTML += `<div style="color: green;">🎉 ¡Número Correcto en ${this.intentosRealizados} intentos! 🎉</div>`;
+            feedbackArea.innerHTML += `<div style="color: green;">¡Número Correcto en ${this.intentosRealizados} intentos!</div>`;
             submitButton.disabled = true;
             this.solucionar(); 
         } else {
@@ -70,13 +70,13 @@ export class Numberle extends Puzzle {
             for (let i = 0; i < this.numeroSecreto.length; i++) {
                 
                 if (intento[i] === this.numeroSecreto[i]) {
-                    // 1. Correcto en Posición
+                    // Correcto en Posición
                     feedback += '✔️ '; 
                 } else if (this.numeroSecreto.includes(intento[i])) {
-                    // 2. Correcto, Posición Incorrecta
+                    // Correcto, Posición Incorrecta
                     feedback += '➖ '; 
                 } else {
-                    // 3. Incorrecto
+                    // Incorrecto
                     feedback += '❌ '; 
                 }
             }

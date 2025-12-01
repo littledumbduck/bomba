@@ -3,7 +3,7 @@ import { Puzzle } from './puzzle.js';
 export class PalabrasPuzzle extends Puzzle {
     constructor(manager, contenedorHTML) {
         super(manager, contenedorHTML); 
-        this.palabras = ["Lunes", "Mañana", "Coche", "Casa", "Perro", "Gato", "Libro", "Mesa", "Silla", "Ventana", "Puerta", "Cielo", "Mar", "Montaña", "Río"];
+        this.palabras = ["CPU", "RAM", "GPU", "Placa base", "Torre", "Internet", "TCP/IP", "Java", "Javascript", "C", "String", "int", "Boolean", "Constructor", "Método"];
         this.palabrasIntroducidas = [];
         this.palabraSeleccionada = '';
         this.palabrasMaximas = 10;
@@ -18,7 +18,9 @@ export class PalabrasPuzzle extends Puzzle {
         // Dibujar Contenedores
         this.contenedorHTML.innerHTML = `
             <div class="palabras-title">¿Está la palabra repetida?</div>
-            <div class="palabras-display">${this.palabraSeleccionada}</div>`; // Usa this.palabraSeleccionada
+            <div class="palabras-display">${this.palabraSeleccionada}</div>
+            <div class="progreso-display">${this.contadorPalabras} / ${this.palabrasMaximas}</div>
+`; // Usa this.palabraSeleccionada
     
         // Botón de palabra repetida
         const repetida = document.createElement('button');
@@ -54,6 +56,11 @@ export class PalabrasPuzzle extends Puzzle {
         if (palabraExistia) {
             // Está repetida
             this.palabrasIntroducidas.push(this.palabraSeleccionada);
+            this.contadorPalabras++;
+            if (this.contadorPalabras >= this.palabrasMaximas) {
+                this.solucionar();
+                return;
+            }
             this.renderizar();
         } else {
             // No está repetida
@@ -63,8 +70,6 @@ export class PalabrasPuzzle extends Puzzle {
     }
 
     comprobarPalabraNueva() {
-        // Si la palabra es nueva
-        
         // funcion find() para buscar la palabra sin tener que usar un for
         const palabraExistia = this.palabrasIntroducidas.find(p => p === this.palabraSeleccionada);
     
@@ -75,7 +80,13 @@ export class PalabrasPuzzle extends Puzzle {
         } else {
             // La palabra no existe, entonces se acierta
             this.palabrasIntroducidas.push(this.palabraSeleccionada);
+            this.contadorPalabras++;
+            if (this.contadorPalabras >= this.palabrasMaximas) {
+                this.solucionar();
+                return;
+            }
             this.renderizar();
+            
         }
     }
 
@@ -84,6 +95,7 @@ export class PalabrasPuzzle extends Puzzle {
     resetearPuzzle() {
         // Limpiamos el array de palabras para el reintento
         this.palabrasIntroducidas = []; 
+        this.contadorPalabras = 0;
         
         // Mostramos el mensaje de fallo y el botón de reintentar
         this.contenedorHTML.innerHTML = `<div class="palabras-fallo">¡Has fallado! ¿Reintentar?</div>`;

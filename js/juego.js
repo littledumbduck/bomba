@@ -6,12 +6,12 @@ import { PalabrasPuzzle } from './PalabrasPuzzle.js';
 export class BombaManager {
     constructor() {
         // Atributos bomba temporizador
-        this.tiempoRestante = 90;    
+        this.tiempoRestante = 120;    
         this.temporizadorID = null;
         this.temporizadorDisplay = document.getElementById('temporizador-display');
 
         // Atributos juegos
-        this.juegosActivos = 3;
+        this.juegosActivos = 4;
         this.aciertosActuales = 0;
         this.maxFallos = 3;
         this.fallosActuales = 0;
@@ -43,7 +43,7 @@ export class BombaManager {
         this.temporizadorDisplay.textContent = 
             `${minutos}:${segundos < 10 ? '0' : ''}${segundos}`;
         
-        // 2. Verificamos la condición de explosión
+        // Verificamos la condición de explosión
         if (this.tiempoRestante <= 0) {
             // Detenemos el conteo regresivo
             clearInterval(this.temporizadorID); 

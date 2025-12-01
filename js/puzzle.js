@@ -13,7 +13,7 @@ export class Puzzle {
         if (!this.resuelto) {
             this.resuelto = true;
             this.manager.manejarAcierto();
-            this.contenedorHTML.innerHTML = '¡Desactivado!'; // Indicador visual de éxito
+            this.contenedorHTML.innerHTML = '<div class="desactivado">¡Desactivado!</div>'; // Indicador visual de éxito
             this.contenedorHTML.style.backgroundColor = 'green';
         }
     }

@@ -72,7 +72,6 @@ body {
     color: white;
     padding: 30px;
     text-align: center;
-
 }
 
 /* Estilos para la página explotada.html */
@@ -115,6 +114,12 @@ body {
     background-color: red;
 }
 
+.desactivado {
+    font-size: 2em;
+    color: white;
+    margin-top: 35%;
+}
+
 /* Animación de pulso para el título */
 @keyframes pulsar {
     from { color: red; text-shadow: 0 0 5px darkred; }
@@ -127,7 +132,7 @@ body {
     font-size: 1.2em;
     text-align: center;
     margin-bottom: 25px;
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 .puzzle-display {
@@ -274,6 +279,7 @@ body {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    width: 150px;
 }
 
 .boton-palabra-repetida:hover {
@@ -295,6 +301,7 @@ body {
     cursor: pointer;
     transition: background-color 0.3s;
     margin-left: 15px;
+    width: 150px;
 }
 
 .boton-palabra-nueva:hover {
@@ -306,4 +313,33 @@ body {
     cursor: not-allowed;
 }
 
+.progreso-display {
+    font-size: 1.2em;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    color: #ffffff;
+}
+
 /* Fin de los estilos para PalabrasPuzzle.js */
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #000000 #1c1c1c;
+}
+
+/* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 13px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #1c1c1c;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #000000;
+    border-radius: 10px;
+    border: 3px solid #ffffff;
+}
