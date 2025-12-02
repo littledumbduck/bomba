@@ -165,8 +165,6 @@ body {
     cursor: not-allowed;
 }
 
-
-
 /* Fin de los estilos específicos de ContadorPuzzle.js */
 
 /* Estilos para la página victoria.html */
@@ -342,4 +340,30 @@ body {
     background-color: #000000;
     border-radius: 10px;
     border: 3px solid #ffffff;
+}
+
+/* Fin de Scrollbar CSS */ 
+
+/* Estilos para ClickPuzzle.js */
+
+.boton-activo {
+    padding: 5px;
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+    box-sizing: border-box;
+}
+
+.boton-no-activo {
+    padding: 5px;
+    background-color: #757575;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+    box-sizing: border-box;
 }
