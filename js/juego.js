@@ -19,7 +19,7 @@ class BombaManager {
         this.rejillaJuegos = document.getElementById('rejilla-juegos');
 
         // Array de puzzles disponibles (por implementar)
-        this.tiposPuzzle = [Numberle, SimonDicePuzzle, ContadorPuzzle, PalabrasPuzzle];
+        this.tiposPuzzle = [Numberle, SimonDicePuzzle, ContadorPuzzle, PalabrasPuzzle, ClickPuzzle]; // 
 
         // Iniciamos el temporizador
         this.iniciarTemporizador();

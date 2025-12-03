@@ -3,13 +3,11 @@ import { Puzzle } from './puzzle.js';
 export class ClickPuzzle extends Puzzle {
     constructor(manager, contenedorHTML) {
         super(manager, contenedorHTML);
-        this.dibujoPuzzle = [[],[]]; // Array doble para el dibujo del puzzle 
+        this.dibujoPuzzle = []; // Array doble para el dibujo del puzzle 
         this.tiempoResolver = 15; // segundos para resolver el puzzle
         this.casillasActivas = 15; // Número de casillas activas
         this.alturaArray = 6; // Altura del array del puzzle
         this.anchoArray = 6; // Ancho del array del puzzle
-        this.botonActivo = document.createElement('button').addClassList.add('boton-activo');
-        this.BotonNoActivo = document.createElement('button').addClassList.add('boton-no-activo');
         this.renderizar();
     }
 
@@ -27,7 +25,7 @@ export class ClickPuzzle extends Puzzle {
     }
 
     rellenarCasillas() {
-
+        this.inicializarMatriz();
         // En el array doble dibujoPuzzle, llenamos con valores aleatorios 1 o 0 las mismas veces que casillasActivas cuidando que no se repitan las posiciones
         let casillasLlenadas = 0;
         while (casillasLlenadas <= this.casillasActivas) {
@@ -61,11 +59,9 @@ export class ClickPuzzle extends Puzzle {
                 const boton = document.createElement('button');
                 if (this.dibujoPuzzle[i][j] === 1) {
                     boton.classList.add('boton-activo');
-                    boton.idlist.add('boton-activo');
                     boton.addEventListener('click', this.manejarClick.bind(this, i, j, true));
                 } else {
                     boton.classList.add('boton-no-activo');
-                    boton.idlist.add('boton-no-activo');
                     boton.addEventListener('click', this.manejarClick.bind(this, i, j, false));
                 }
                 celda.appendChild(boton);
@@ -106,5 +102,12 @@ export class ClickPuzzle extends Puzzle {
         this.casillasActivas = 15;
         this.contenedorHTML.style.backgroundColor = '#444';
         this.comenzarPuzzle();
+    }
+
+    inicializarMatriz() {
+        this.dibujoPuzzle = []; // Array doble para el dibujo del puzzle 
+        for (let i = 0; i < this.alturaArray; i++) {
+            this.dibujoPuzzle[i] = new Array(this.anchoArray).fill(0);
+        }
     }
 }

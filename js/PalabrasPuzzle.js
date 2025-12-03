@@ -3,14 +3,14 @@ import { Puzzle } from './puzzle.js';
 export class PalabrasPuzzle extends Puzzle {
     constructor(manager, contenedorHTML) {
         super(manager, contenedorHTML); 
-        this.palabras = ["CPU", "RAM", "GPU", "Placa base", "Torre", "Internet", "TCP/IP", "Java", "Javascript", "C", "String", "int", "Boolean", "Constructor", "Método"];
+        this.palabras = ["CPU", "RAM", "GPU", "Placa base", "Torre", "Internet", "Método", "Java", "Javascript", "C", "String", "int"]; // , "Boolean", "Constructor"
         this.palabrasIntroducidas = [];
         this.palabraSeleccionada = '';
-        this.palabrasMaximas = 10;
+        this.palabrasMaximas = 12;
         this.contadorPalabras = 0;
         this.renderizar();
     }
-
+    
     renderizar() {
         // Llamamos al método
         this.insertarPalabraNueva();
