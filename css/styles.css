@@ -362,24 +362,62 @@ body {
 
 /* Estilos para ClickPuzzle.js */
 
-.boton-activo {
-    padding: 5px;
-    background-color: #ffffff;
-    border: 1px solid #000000;
-    border-radius: 5px;
-    cursor: pointer;
-    height: 20px;
-    width: 20px;
-    box-sizing: border-box;
+.clickpuzzle-tabla {
+    margin: 20px auto; 
+    border-collapse: collapse; 
 }
 
-.boton-no-activo {
-    padding: 5px;
-    background-color: #757575;
-    border: 1px solid #000000;
+.clickpuzzle-tabla td {
+    padding: 0;
+    border: none;
+}
+
+.puzzle-celda {
+    width: 45px;
+    height: 45px;
+    margin: 5px;
+    border: 2px solid #555;
+    border-radius: 5px;
+    background-color: #333;
+    cursor: pointer;
+    transition: 
+        background-color 0.1s, 
+        opacity 0.1s, 
+        transform 0.1s;
+    
+    opacity: 1; 
+}
+
+.boton-inactivo-memoria {
+    background-color: #333;
+    border-color: #555;
+}
+
+.boton-activo-memoria:disabled {
+    background-color: #00cc00;
+    border-color: #008000;
+    box-shadow: 0 0 10px #00cc00;
+    opacity: 1 !important;
+}
+
+.puzzle-celda:hover:not(:disabled) {
+    transform: scale(1.05);
+    border-color: #aaa;
+}
+
+.clickpuzzle-instrucciones {
+    font-size: 1.2em;
+    margin-top: 90px;
+}
+
+.boton-clickpuzzle {
+    padding: 10px 25px;
+    font-size: 1em;
+    background-color: #cf0a0a;
+    color: white;
+    border: none;
     border-radius: 5px;
     cursor: pointer;
-    height: 20px;
-    width: 20px;
-    box-sizing: border-box;
+    transition: background-color 0.3s;
+    margin-top: 20px;
 }
