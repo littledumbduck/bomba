@@ -114,6 +114,22 @@ body {
     background-color: red;
 }
 
+.boton-reintentar-victoria {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    text-decoration: none; /* Quitamos el subrayado del enlace */
+    color: white;
+    background-color: rgb(27, 85, 0);
+    border: 2px solid rgb(0, 68, 9);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.boton-reintentar-victoria:hover {
+    background-color: green;
+}
+
 .desactivado {
     font-size: 2em;
     color: white;

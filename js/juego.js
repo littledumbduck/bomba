@@ -4,7 +4,7 @@ import { SimonDicePuzzle } from './SimonDicePuzzle.js';
 import { PalabrasPuzzle } from './PalabrasPuzzle.js';
 import { ClickPuzzle } from './ClickPuzzle.js';
 
-export class BombaManager {
+class BombaManager {
     constructor() {
         // Atributos bomba temporizador
         this.tiempoRestante = 120;    
@@ -19,7 +19,7 @@ export class BombaManager {
         this.rejillaJuegos = document.getElementById('rejilla-juegos');
 
         // Array de puzzles disponibles (por implementar)
-        this.tiposPuzzle = [Numberle, SimonDicePuzzle, ContadorPuzzle, PalabrasPuzzle, ClickPuzzle];
+        this.tiposPuzzle = [Numberle, SimonDicePuzzle, ContadorPuzzle, PalabrasPuzzle];
 
         // Iniciamos el temporizador
         this.iniciarTemporizador();
