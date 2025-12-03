@@ -20,7 +20,7 @@ export class PalabrasPuzzle extends Puzzle {
             <div class="palabras-title">¿Está la palabra repetida?</div>
             <div class="palabras-display">${this.palabraSeleccionada}</div>
             <div class="progreso-display">${this.contadorPalabras} / ${this.palabrasMaximas}</div>
-`; // Usa this.palabraSeleccionada
+        `;
     
         // Botón de palabra repetida
         const repetida = document.createElement('button');
