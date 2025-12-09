@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+
 body {
     margin: 0;
     padding: 0;
@@ -7,7 +9,6 @@ body {
 }
 
 .bomba-contenedor {
-    /* Centrar todo en la pantalla */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,18 +22,22 @@ body {
     max-width: 1400px;
     margin-bottom: 20px;
     justify-content: center;
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .temporizador {
     font-size: 3em;
     color: red;
     border: 4px solid red;
-    padding: 10px 20px;
+    padding: 20px 20px;
     min-width: 100px;
     text-align: center;
-    height:  60px;
+    height:  88px;
     margin-right: -2px;
-    width: 100px;
+    width: 250px;
+    box-sizing: border-box;
 }
 
 .contador-fallos {
@@ -42,9 +47,12 @@ body {
     min-width: 100px;
     text-align: center;
     display: inline-block;
-    padding: 10px 20px;
+    padding: 15px 20px;
     font-size: 55px;
     margin-left: -2px;
+    box-sizing: border-box;
+    height:  88px;
+    width: 250px;
 }
 
 .rejilla-juegos {
@@ -60,8 +68,6 @@ body {
     background-color: #222;
 }
 
-
-
 .ranura {
     /* Estilo de las ranuras donde irán los juegos */
     background-color: #444;
@@ -72,6 +78,7 @@ body {
     color: white;
     padding: 30px;
     text-align: center;
+    box-shadow: inset -4px -5px 12px 5px rgba(2, 2, 2, 0.473)
 }
 
 /* Estilos para la página explotada.html */

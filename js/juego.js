@@ -18,8 +18,8 @@ class BombaManager {
         this.fallosActuales = 0;
         this.rejillaJuegos = document.getElementById('rejilla-juegos');
 
-        // Array de puzzles disponibles (por implementar)
-        this.tiposPuzzle = [Numberle, SimonDicePuzzle, ContadorPuzzle, PalabrasPuzzle, ClickPuzzle]; // 
+        // Array de puzzles disponibles
+        this.tiposPuzzle = [Numberle, SimonDicePuzzle, ContadorPuzzle, PalabrasPuzzle, ClickPuzzle]; // Todos los juegos agrupados en un array
 
         // Iniciamos el temporizador
         this.iniciarTemporizador();
@@ -45,7 +45,7 @@ class BombaManager {
             `${minutos}:${segundos < 10 ? '0' : ''}${segundos}`;
         
         // Verificamos la condición de explosión
-        if (this.tiempoRestante <= 0) {
+        if (this.tiempoRestante < 0) {
             // Detenemos el conteo regresivo
             clearInterval(this.temporizadorID); 
             
@@ -78,7 +78,7 @@ class BombaManager {
         if (this.fallosActuales === 1) {
             x = 'X';
         } else if (this.fallosActuales === 2) {
-            x = 'X X';
+            x = 'X   X';
         }
 
         contadorFallosDisplay.textContent = x;
