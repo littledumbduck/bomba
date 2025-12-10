@@ -17,6 +17,7 @@ class BombaManager {
         this.maxFallos = 3;
         this.fallosActuales = 0;
         this.rejillaJuegos = document.getElementById('rejilla-juegos');
+        this.puntuacion = 0;
 
         // Array de puzzles disponibles
         this.tiposPuzzle = [Numberle, SimonDicePuzzle, ContadorPuzzle, PalabrasPuzzle, ClickPuzzle]; // Todos los juegos agrupados en un array
@@ -59,6 +60,7 @@ class BombaManager {
     }
 
     manejarAcierto() {
+        this.setPuntuacion();
         this.aciertosActuales++;
         this.verificarEstadoJuego();
     }
@@ -66,6 +68,7 @@ class BombaManager {
     verificarEstadoJuego() {
         if (this.aciertosActuales >= this.juegosActivos) {
             clearInterval(this.temporizadorID);
+            alert(`¡Bomba desactivada! Tu puntuación final es: ${this.puntuacion}`);
             window.location.href = 'victoria.html';
         }
     }
@@ -111,6 +114,10 @@ class BombaManager {
             const puzzle = new ClaseSeleccionada(this, ranura); 
             puzzle.renderizar();
         });
+    }
+
+    setPuntuacion() {
+        this.puntuacion = this.tiempoRestante * 10 - this.fallosActuales * 50;
     }
     
 }
