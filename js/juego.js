@@ -117,7 +117,7 @@ class BombaManager {
     }
 
     setPuntuacion() {
-        this.puntuacion = this.tiempoRestante * 10 - this.fallosActuales * 50;
+        this.puntuacion = this.puntuacion + (this.tiempoRestante * 10 - this.fallosActuales * 50);
     }
     
 }
