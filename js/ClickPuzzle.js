@@ -6,7 +6,7 @@ export class ClickPuzzle extends Puzzle {
         this.dibujoPuzzle = []; 
         this.tiempoResolver = 15; 
         this.tiempoMemoria = 10; 
-        this.casillasActivas = 15; 
+        this.casillasActivas = 10; 
         this.alturaArray = 5; 
         this.anchoArray = 5;
         this.renderizar();
