@@ -42,7 +42,7 @@ export class ContadorPuzzle extends Puzzle {
             
             if (tiempoTranscurrido >= (tiempoIdeal - margen) && tiempoTranscurrido <= (tiempoIdeal + margen)) {
                 this.actionButton.textContent = 'CONSEGUIDO!';
-                this.solucionar();
+                this.solucionar(this.puntuacionContador);
             } else {
                 // FALLO
                     this.contenedorHTML.innerHTML = `

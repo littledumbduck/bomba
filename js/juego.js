@@ -7,7 +7,7 @@ import { ClickPuzzle } from './ClickPuzzle.js';
 class BombaManager {
     constructor() {
         // Atributos bomba temporizador
-        this.tiempoRestante = 120;    
+        this.tiempoRestante = 120;
         this.temporizadorID = null;
         this.temporizadorDisplay = document.getElementById('temporizador-display');
 
@@ -21,12 +21,8 @@ class BombaManager {
 
         // Array de puzzles disponibles y puntuaciones
         this.tiposPuzzle = [Numberle, SimonDicePuzzle, ContadorPuzzle, PalabrasPuzzle, ClickPuzzle]; // Todos los juegos agrupados en un array
-        this.puntuacionNumberle = 1;
-        this.puntuacionSimon = 1;
-        this.puntuacionContador = 1;
-        this.puntuacionPalabras = 1;
-        this.puntuacionClick = 1;
         this.indicesSeleccionados = [];
+        this.extra = 0;
 
         // Otros
         this.formatearBody = document.body;
@@ -69,7 +65,8 @@ class BombaManager {
         window.location.href = 'explotada.html';
     }
 
-    manejarAcierto() {
+    manejarAcierto(bonificacion) {
+        this.extra = bonificacion;
         this.setPuntuacion();
         this.aciertosActuales++;
         this.verificarEstadoJuego();
@@ -138,28 +135,10 @@ class BombaManager {
 
     setPuntuacion() {
 
-        switch (this.indicesSeleccionados[this.aciertosActuales]) {
-            case 0:
-                this.puntuacion = this.puntuacion + ((this.tiempoRestante * 10 - (this.fallosActuales * 50)) * this.puntuacionNumberle);
-                break;
-            case 1:
-                this.puntuacion = this.puntuacion + ((this.tiempoRestante * 10 - (this.fallosActuales * 50)) * this.puntuacionSimon);
-                break;
-            case 2:
-                this.puntuacion = this.puntuacion + ((this.tiempoRestante * 10 - (this.fallosActuales * 50)) * this.puntuacionContador);
-                break;
-            case 3:
-                this.puntuacion = this.puntuacion + ((this.tiempoRestante * 10 - (this.fallosActuales * 50)) * this.puntuacionPalabras);
-                break;
-            case 4:
-                this.puntuacion = this.puntuacion + ((this.tiempoRestante * 10 - (this.fallosActuales * 50)) * this.puntuacionClick);
-                break;
-            default:
-                console.log("Error en la puntuacion");
-                break;
-        }
+        this.puntuacion = this.puntuacion + ((this.tiempoRestante * 10 - (this.fallosActuales * 50)) * this.extra);
 
         console.log("Puntuación: " + this.puntuacion);
+        console.log("Extra: " + this.extra);
 
     }
 

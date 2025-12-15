@@ -115,7 +115,7 @@ export class ClickPuzzle extends Puzzle {
             this.casillasActivas--;
             
             if (this.casillasActivas === 0) {
-                this.solucionar();
+                this.solucionar(this.puntuacionClick);
             }
         } else {
             // FALLO (Pulsó un botón inactivo)

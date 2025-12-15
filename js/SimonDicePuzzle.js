@@ -106,7 +106,7 @@ export class SimonDicePuzzle extends Puzzle {
         }
         if (intentoActual === this.nivel) {
             if (this.nivel === this.nivelesMaximos) {
-                this.solucionar(); // Puzzle resuelto
+                this.solucionar(this.puntuacionSimon); // Puzzle resuelto
             } else {
                 this.nivel++;
                 this.intentoUsuario = []; // Reiniciamos el intento del usuario

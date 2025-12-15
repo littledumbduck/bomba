@@ -62,7 +62,7 @@ export class Numberle extends Puzzle {
             // Lógica de ACUERTO
             feedbackArea.innerHTML += `<div style="color: green;">¡Número Correcto en ${this.intentosRealizados} intentos!</div>`;
             submitButton.disabled = true;
-            this.solucionar(); 
+            this.solucionar(this.puntuacionNumberle); 
         } else {
             // Lógica de PISTAS (Ahora por Posición [1], [2], [3])
             let feedback = `Intento ${this.intentosRealizados}: ${intento} - `;
