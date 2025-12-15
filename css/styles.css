@@ -214,6 +214,12 @@ body {
     margin-bottom: 30px;
 }
 
+.puntuacion {
+    font-size: 30px;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
 /* Animación de pulso para el título */
 @keyframes victoria {
     from { color: rgb(94, 255, 94); text-shadow: 0 0 5px rgb(168, 255, 194); }

@@ -19,8 +19,17 @@ class BombaManager {
         this.rejillaJuegos = document.getElementById('rejilla-juegos');
         this.puntuacion = 0;
 
-        // Array de puzzles disponibles
+        // Array de puzzles disponibles y puntuaciones
         this.tiposPuzzle = [Numberle, SimonDicePuzzle, ContadorPuzzle, PalabrasPuzzle, ClickPuzzle]; // Todos los juegos agrupados en un array
+        this.puntuacionNumberle = 1;
+        this.puntuacionSimon = 1;
+        this.puntuacionContador = 1;
+        this.puntuacionPalabras = 1;
+        this.puntuacionClick = 1;
+        this.indicesSeleccionados = [];
+
+        // Otros
+        this.formatearBody = document.body;
 
         // Iniciamos el temporizador
         this.iniciarTemporizador();
@@ -30,6 +39,7 @@ class BombaManager {
     }
 
     iniciarTemporizador() {
+        this.manejarTiempo(); // Llamada inicial para actualizar inmediatamente la pantalla
         this.temporizadorID = setInterval(() => {
             this.manejarTiempo();
         }, 1000);
@@ -68,8 +78,7 @@ class BombaManager {
     verificarEstadoJuego() {
         if (this.aciertosActuales >= this.juegosActivos) {
             clearInterval(this.temporizadorID);
-            alert(`¡Bomba desactivada! Tu puntuación final es: ${this.puntuacion}`);
-            window.location.href = 'victoria.html';
+            this.pantallaVictoria();
         }
     }
 
@@ -93,16 +102,21 @@ class BombaManager {
 
     colocarJuegosAleatorios() {
         const ranuras = this.rejillaJuegos.querySelectorAll('.ranura');
-        const indicesSeleccionados = new Set();
         
-        // Bucle para seleccionar 3 índices únicos (sin repetición)
-        while (indicesSeleccionados.size < this.juegosActivos) {
+        // Reiniciamos selección previa y calculamos cuántas ranuras usar
+        this.indicesSeleccionados = [];
+        const maxSlots = Math.min(this.juegosActivos, ranuras.length);
+
+        // Bucle para seleccionar índices únicos (sin repetición)
+        while (this.indicesSeleccionados.length < maxSlots) {
             const indiceAleatorio = Math.floor(Math.random() * ranuras.length);
-            indicesSeleccionados.add(indiceAleatorio); 
+            if (!this.indicesSeleccionados.includes(indiceAleatorio)) {
+                this.indicesSeleccionados.push(indiceAleatorio);
+            }
         }
 
         // Iteramos sobre los índices únicos para instanciar y renderizar
-        indicesSeleccionados.forEach(indice => {
+        this.indicesSeleccionados.forEach(indice => {
             const ranura = ranuras[indice];
 
             // Elegimos un índice aleatorio dentro del array this.tiposPuzzle
@@ -114,14 +128,57 @@ class BombaManager {
             const puzzle = new ClaseSeleccionada(this, ranura); 
             puzzle.renderizar();
         });
+
+        for (let index = 0; index < this.indicesSeleccionados.length; index++) {
+            console.log(this.indicesSeleccionados[index]);
+            
+        }
+
     }
 
     setPuntuacion() {
-        this.puntuacion = this.puntuacion + (this.tiempoRestante * 10 - this.fallosActuales * 50);
+
+        switch (this.indicesSeleccionados[this.aciertosActuales]) {
+            case 0:
+                this.puntuacion = this.puntuacion + ((this.tiempoRestante * 10 - (this.fallosActuales * 50)) * this.puntuacionNumberle);
+                break;
+            case 1:
+                this.puntuacion = this.puntuacion + ((this.tiempoRestante * 10 - (this.fallosActuales * 50)) * this.puntuacionSimon);
+                break;
+            case 2:
+                this.puntuacion = this.puntuacion + ((this.tiempoRestante * 10 - (this.fallosActuales * 50)) * this.puntuacionContador);
+                break;
+            case 3:
+                this.puntuacion = this.puntuacion + ((this.tiempoRestante * 10 - (this.fallosActuales * 50)) * this.puntuacionPalabras);
+                break;
+            case 4:
+                this.puntuacion = this.puntuacion + ((this.tiempoRestante * 10 - (this.fallosActuales * 50)) * this.puntuacionClick);
+                break;
+            default:
+                console.log("Error en la puntuacion");
+                break;
+        }
+
+        console.log("Puntuación: " + this.puntuacion);
+
+    }
+
+    pantallaVictoria() {
+        const nuevoContenidoHTML = `
+                <div class="victoria-container">
+                <h1>🏆 ¡DESACTIVASTE LA BOMBA! 🏆</h1>
+                <p>¡Enhorabuena!</p>
+                <div class="puntuacion">Puntuación: ${this.puntuacion}</div>
+                <a href="index.html" class="boton-reintentar-victoria">
+                    Empezar Nueva Misión
+                </a>
+            </div>
+        `;
+        this.formatearBody.innerHTML = nuevoContenidoHTML;
     }
     
 }
 
-  document.addEventListener('DOMContentLoaded', () => {
-      new BombaManager();
-  });
+document.addEventListener('DOMContentLoaded', () => {
+    new BombaManager();
+});
