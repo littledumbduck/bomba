@@ -7,7 +7,7 @@ export class Puzzle {
 
         // Puntuaciones de los puzzles
         this.puntuacionNumberle = 3;
-        this.puntuacionSimon = 5;
+        this.puntuacionSimon = 4;
         this.puntuacionContador = 6;
         this.puntuacionPalabras = 5;
         this.puntuacionClick = 8;
