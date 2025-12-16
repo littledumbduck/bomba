@@ -24,7 +24,7 @@ class BombaManager {
         this.indicesSeleccionados = [];
         this.extra = 0;
 
-        // Otros
+        // Variable para apuntar al body de la web (usado para cambiar de página)
         this.formatearBody = document.body;
 
         // Iniciamos el temporizador
@@ -53,10 +53,9 @@ class BombaManager {
         
         // Verificamos la condición de explosión
         if (this.tiempoRestante < 0) {
-            // Detenemos el conteo regresivo
-            clearInterval(this.temporizadorID); 
             
-            // Llamamos al método de explosión
+            // Logica para terminar el juego
+            clearInterval(this.temporizadorID); 
             this.explotarBomba(); 
         }
     }

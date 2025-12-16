@@ -138,7 +138,6 @@ export class ClickPuzzle extends Puzzle {
     
     resetearPuzzle() {
         this.dibujoPuzzle = []; 
-        this.casillasActivas = 15;
         this.contenedorHTML.style.backgroundColor = ''; 
         this.renderizar(); // Volvemos a dibujar el botón de START
     }
