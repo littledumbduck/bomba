@@ -5,8 +5,9 @@ export class ClickPuzzle extends Puzzle {
         super(manager, contenedorHTML);
         this.dibujoPuzzle = []; 
         this.tiempoResolver = 15; 
+        this.casillasMaximas = 10;
         this.tiempoMemoria = 10; 
-        this.casillasActivas = 10; 
+        this.casillasActivas = this.casillasMaximas; 
         this.alturaArray = 5; 
         this.anchoArray = 5;
         this.renderizar();
@@ -138,6 +139,7 @@ export class ClickPuzzle extends Puzzle {
     
     resetearPuzzle() {
         this.dibujoPuzzle = []; 
+        this.casillasActivas = this.casillasMaximas;
         this.contenedorHTML.style.backgroundColor = ''; 
         this.renderizar(); // Volvemos a dibujar el botón de START
     }

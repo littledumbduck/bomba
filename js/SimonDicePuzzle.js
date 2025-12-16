@@ -9,10 +9,19 @@ export class SimonDicePuzzle extends Puzzle {
         this.nivelesMaximos = 5; // Número máximo de niveles
         this.botones = []; // Array para almacenar los botones del juego
         this.listoDisplay = null;
-        this.iniciarJuego(); // Iniciamos el juego con un botón
+        this.renderizar(); // Iniciamos el juego con un botón
     }
     
-    iniciarJuego() {
+    generarSecuencia() {
+        for (let i = 0; i < this.nivelesMaximos; i++) {
+            // Genera números del 1 al 4
+            let paso = Math.floor(Math.random() * 4) + 1;
+            this.secuencia.push(paso);
+        }
+    }
+    
+    renderizar() {
+        // Creamos los botones del juego
         this.contenedorHTML.innerHTML = ''; // Limpiamos el contenedor
         const boton = document.createElement('button');
         boton.classList.add('comenzar-simon-boton');
@@ -38,18 +47,6 @@ export class SimonDicePuzzle extends Puzzle {
             this.mostrarSecuencia();
         });
         this.contenedorHTML.appendChild(boton); 
-    }
-    
-    generarSecuencia() {
-        for (let i = 0; i < this.nivelesMaximos; i++) {
-            // Genera números del 1 al 4
-            let paso = Math.floor(Math.random() * 4) + 1;
-            this.secuencia.push(paso);
-        }
-    }
-    
-    renderizar() {
-        // Creamos los botones del juego
         
     }
 
