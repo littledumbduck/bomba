@@ -85,7 +85,7 @@ export class SimonDicePuzzle extends Puzzle {
         boton.style.opacity = '0.2';
         setTimeout(() => {
             boton.style.opacity = '1';
-        }, 500);
+        }, 350);
     }
 
     manejarClick(index) {
