@@ -82,7 +82,7 @@ export class PalabrasPuzzle extends Puzzle {
             this.palabrasIntroducidas.push(this.palabraSeleccionada);
             this.contadorPalabras++;
             if (this.contadorPalabras >= this.palabrasMaximas) {
-                this.solucionar();
+                this.solucionar(this.puntuacionPalabras);
                 return;
             }
             this.renderizar();
