@@ -149,6 +149,47 @@ body {
     to { color: yellow; text-shadow: 0 0 20px red; }
 }
 
+/* Estilos específicos de Numberle.js */
+
+.numberle-title {
+    font-size: 1.2em;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.feedback-area {
+    background-color: rgb(58, 58, 58);
+    margin-top: 10px;
+    font-size: 18px;
+    box-sizing: border-box;
+    padding: 7px;
+    height: 144px;
+    overflow: auto;
+    border-radius: 4%;
+}
+
+.guess-input {
+    height: 40px;
+    background-color: #333333;
+    color: white;
+    border: white 1px solid;
+    text-align: center;
+    font-size: 20px;
+    width: 170px;
+}
+
+.enviarnumberle {
+    padding: 10px 25px;
+    font-size: 1em;
+    background-color: #cf0a0a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
 /*  Estilos específicos de ContadorPuzzle.js */
 
 .puzzle-title {

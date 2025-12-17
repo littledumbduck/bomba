@@ -11,10 +11,10 @@ export class Numberle extends Puzzle {
 
     renderizar() {
         this.contenedorHTML.innerHTML = `
-            <div class="puzzle-title">Adivina el número secreto (${this.numeroSecreto.length} dígitos)</div>
+            <div class="numberle-title">Adivina el número secreto (${this.numeroSecreto.length} dígitos)</div>
             <div class="puzzle-instructions">Intentos restantes: ${this.intentosMaximos - this.intentosRealizados}</div>
             <input type="text" class="guess-input" maxlength="${this.numeroSecreto.length}" placeholder="Ingresa tu número">
-            <button class="submit-button">ENVIAR</button>
+            <button class="submit-button enviarnumberle">ENVIAR</button>
             <div class="feedback-area"></div>
         `;
         
@@ -97,6 +97,11 @@ export class Numberle extends Puzzle {
             }
         }
         
+        feedbackArea.scrollTo({
+            top: feedbackArea.scrollHeight,
+            behavior: 'smooth'
+        });
+
         input.value = ''; 
     }
 }
