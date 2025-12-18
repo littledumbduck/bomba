@@ -3,7 +3,7 @@ import { Puzzle } from './puzzle.js';
 export class PalabrasPuzzle extends Puzzle {
     constructor(manager, contenedorHTML) {
         super(manager, contenedorHTML); 
-        this.palabras = ["CPU", "RAM", "GPU", "Placa base", "Torre", "Internet", "Método", "Java", "Javascript", "C", "String", "int"]; // , "Boolean", "Constructor"
+        this.palabras = ["CPU", "RAM", "GPU", "Placa base", "Boolean", "Internet", "Método", "Java", "Javascript", "C", "String", "int"]; // , "Torre", "Constructor"
         this.palabrasIntroducidas = [];
         this.palabraSeleccionada = '';
         this.palabrasMaximas = 12;
@@ -90,7 +90,7 @@ export class PalabrasPuzzle extends Puzzle {
         }
     }
 
-    // --- RESET Y UTILIDAD ---
+    // --- RESET ---
 
     resetearPuzzle() {
         // Limpiamos el array de palabras para el reintento

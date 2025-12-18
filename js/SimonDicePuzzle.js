@@ -97,6 +97,7 @@ export class SimonDicePuzzle extends Puzzle {
         const intentoActual = this.intentoUsuario.length;
         if (this.intentoUsuario[intentoActual - 1] !== this.secuencia[intentoActual - 1]) {
             this.registrarFallo();
+            this.deshabilitarBotones();
             this.intentoUsuario = []; // Reiniciamos el intento del usuario
             setTimeout(() => this.mostrarSecuencia(), 1000); // Mostramos la secuencia nuevamente
             return;
