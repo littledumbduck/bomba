@@ -14,7 +14,7 @@ export class Puzzle {
     }
 
     renderizar() {
-        this.contenedorHTML.innerHTML = '<p>No se hizo bien el overread</p>';
+        this.contenedorHTML.innerHTML = '<p>No se hizo bien el override</p>';
     }
 
     solucionar(bonificacion) {
